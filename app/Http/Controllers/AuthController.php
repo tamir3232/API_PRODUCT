@@ -8,6 +8,7 @@ use App\Http\Resources\userResource;
 use App\Models\user;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -51,5 +52,9 @@ class AuthController extends Controller
         $user = user::findorfail($id);
         return new userDetailResource($user);
 
+    }
+    public function me(Request $request){
+        $user = Auth::user();
+        return new userDetailResource($user);
     }
 }

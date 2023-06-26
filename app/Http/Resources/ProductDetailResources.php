@@ -17,7 +17,6 @@ class ProductDetailResources extends JsonResource
         return [
             'id' => $this->id,
            'name' => $this->name,
-           'Author' => $this->Author_id,
            'produsen' =>$this->whenLoaded('produsen')
         ];
     }
